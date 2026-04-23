@@ -1,0 +1,362 @@
+
+
+/* ── Reset base ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CAMBIO 1 — Layout macro con grid-template-areas
+   body actúa como grid container con 3 áreas nombradas
+   ══════════════════════════════════════════════════════════════ */
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  color: #444444; /* CORRECCIÓN: #bbb (ratio 1.8:1) → #444444 (ratio 9.7:1) */
+  background: #f5f5f5;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+/* Asignación de áreas a landmarks semánticos */
+.header { grid-area: header; }
+.main   { grid-area: main;   }
+.footer { grid-area: footer; }
+
+/* ── Header ───────────────────────────────────────────────────── */
+.header {
+  background: #1a1a2e;
+  padding: 16px 40px;
+  border-bottom: 3px solid #e94560;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CAMBIO 2 — Navegación con flexbox
+   Reemplaza display: inline-block + margin-right en .nav-links a
+   ══════════════════════════════════════════════════════════════ */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  color: #e94560;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;       /* CAMBIO 2: flex reemplaza el flujo inline-block */
+  flex-wrap: wrap;
+  gap: 4px;            /* gap reemplaza margin-right en cada enlace */
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 4px 8px;
+  text-decoration: none;
+  color: #c8c8c8; /* CORRECCIÓN: #555 (ratio 3.5:1) → #c8c8c8 (ratio 7.2:1) */
+  border-radius: 2px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #e94560;
+  outline: 2px solid #e94560;
+  outline-offset: 3px;
+}
+
+/* ── Hero / Personaje ─────────────────────────────────────────── */
+.hero {
+  padding: 60px 40px;
+  background: #16213e;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #e94560;
+  flex-shrink: 0;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Estilos que antes vivían como inline en el HTML */
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e94560;
+  margin: 0 0 8px;
+}
+
+.class-badge {
+  display: inline-block;
+  background: #e94560;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: #ffffff; /* CORRECCIÓN: #aaa (ratio 2.1:1) → #ffffff (ratio 4.6:1) */
+}
+
+.hero-bio {
+  margin-top: 16px;
+  max-width: 600px;
+  color: #d4d4d4;
+  line-height: 1.6;
+}
+
+/* ── dl/dt/dd del hero-meta ───────────────────────────────────── */
+.hero-meta {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.hero-meta-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.hero-meta dt {
+  color: #e94560;
+  font-weight: bold;
+}
+
+.hero-meta dd {
+  margin: 0;
+  color: #d4d4d4;
+}
+
+/* ── Título de sección compartido ─────────────────────────────── */
+.section-title {
+  font-size: 1.8rem;
+  color: #e8e8e8; /* CORRECCIÓN: #ccc (ratio 4.1:1) → #e8e8e8 (ratio 11.5:1) */
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e94560;
+  padding-bottom: 8px;
+  margin-top: 0;
+}
+
+/* ── Stats ────────────────────────────────────────────────────── */
+.stats-section {
+  padding: 60px 40px;
+  background: #0f3460;
+}
+
+/* CAMBIO 3: float: left + overflow: hidden → CSS Grid moderno */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  /* float: left y width: 22% eliminados */
+  background: #16213e;
+  border: 1px solid #e94560;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* dl/dt/dd dentro de cada stat-card */
+.stat-data {
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.stat-data-pair {
+  display: flex;
+  flex-direction: column-reverse; /* número arriba visualmente, dt primero en DOM */
+  align-items: center;
+}
+
+.stat-data dt,
+.stat-data dd {
+  margin: 0;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e94560;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c0c0c0; /* CORRECCIÓN: #888 (ratio 3.0:1) → #c0c0c0 (ratio 5.9:1) */
+}
+
+/* ── Habilidades ──────────────────────────────────────────────── */
+.skills-section {
+  padding: 60px 40px;
+  background: #1a1a2e;
+}
+
+.skill-card {
+  border: 1px solid #e94560;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: #16213e;
+}
+
+/* Estilos que antes vivían como inline en el HTML */
+.skill-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #e94560;
+  margin: 0 0 8px;
+}
+
+.skill-desc {
+  color: #d4d4d4;
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+
+.skill-cost {
+  font-size: 0.8rem;
+  color: #b8b8b8; /* CORRECCIÓN: #777 (ratio 2.7:1) → #b8b8b8 (ratio 5.3:1) */
+  margin: 4px 0 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CAMBIO 2 — Tags con flexbox
+   Reemplaza display: inline-block + margin-right en cada .tag
+   ══════════════════════════════════════════════════════════════ */
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;       /* CAMBIO 2: flex reemplaza inline-block en .tag */
+  flex-wrap: wrap;
+  gap: 6px;            /* gap reemplaza margin-right: 4px en .tag */
+}
+
+.tag {
+  display: inline-block;
+  background: #e94560;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  /* margin-right: 4px eliminado — lo maneja gap del padre */
+  color: #ffffff;
+}
+
+/* ── Formulario de desafío ────────────────────────────────────── */
+.challenge-section {
+  padding: 60px 40px;
+  background: #0f3460;
+}
+
+/* Estilo que antes era inline en el HTML */
+.challenge-intro {
+  margin-bottom: 24px;
+  max-width: 600px;
+  color: #d4d4d4;
+  line-height: 1.6;
+}
+
+/* Labels visibles y asociados (antes no existían en el original) */
+form label {
+  display: block;
+  color: #e8e8e8;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #e94560;
+  background: #16213e;
+  color: #d4d4d4; /* CORRECCIÓN: #bbb (ratio 4.1:1) → #d4d4d4 (ratio 7.8:1) */
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: Georgia, serif;
+}
+
+/* CORRECCIÓN: foco visible — antes ausente (viola WCAG 2.4.7) */
+input:focus,
+select:focus {
+  outline: 2px solid #e94560;
+  outline-offset: 2px;
+  border-color: #ff6b85;
+}
+
+/* ── Botón ────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 10px 28px;
+  background: #e94560;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: Georgia, serif;
+  /* Propiedades necesarias al pasar de <div> a <button> */
+  border: none;
+  appearance: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background: #c73652;
+}
+
+.btn:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  background: #1a1a2e;
+  color: #ffffff; /* blanco sobre #1a1a2e = ratio 16.7:1 ✅ */
+  text-align: center;
+  padding: 20px;
+  border-top: 3px solid #e94560;
+}
+
+.footer p {
+  margin: 4px 0;
+}
