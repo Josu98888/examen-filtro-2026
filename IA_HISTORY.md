@@ -23,48 +23,21 @@
 ## Prompt 1
 
 ### Momento del proceso
-
-```
-<!--
-  Indicá en qué punto del examen usaste este prompt.
-  No es sobre la hora exacta — es sobre el contexto: ¿qué estabas intentando resolver cuando recurriste a la IA?
-  Ej: "Cuando no sabía cómo estructurar el layout con Grid."
-  Ej: "Al terminar el HTML, para verificar si me faltaba algo de accesibilidad."
-  Ej: "Al principio del ejercicio de JS, para entender cómo arrancar."
--->
-```
+Este prompt fue utilizado al inicio de la etapa de mejora del código, con el objetivo de darle contexto a la IA antes de indicarle cambios más específicos.
 
 ### Lo que le pedí a la IA
-
-```
-<!-- Pegá aquí el prompt exacto que escribiste. Debe ser el texto que vos escribiste, no la respuesta. -->
-```
+Actuá como un desarrollador frontend senior especializado en accesibilidad web y buenas prácticas HTML5. Te voy a compartir un archivo HTML y necesito que lo mejores aplicando criterios modernos de semántica y accesibilidad, sin modificar el diseño visual ni la funcionalidad existente.
+Mantené las clases CSS existentes, no elimines funcionalidad y devolvé el código completo corregido junto con una breve explicación de los cambios realizados.
 
 ### Análisis del resultado obtenido
 
 ```
-<!--
-  Describí con tus propias palabras qué generó la IA. No copies el código ni la respuesta — analizála.
-  Mínimo 3 oraciones. Respondé:
-  - ¿Qué enfoque tomó la IA para resolver el problema?
-  - ¿El resultado era lo que esperabas? ¿Por qué sí o por qué no?
-  - ¿Qué parte te resultó útil como punto de partida?
--->
+Al tratarse de un prompt de contexto, la IA no generó una solución directa sino que tomó una orientación general enfocada en entender el objetivo de mejorar la estructura y aplicar buenas prácticas. Esto permitió establecer una base clara antes de pedir cambios más específicos
 ```
 
 ### Qué debí corregir manualmente y por qué
 
-```
-<!--
-  Esta sección es la más importante. Sé específico/a. Mínimo 3 oraciones.
-  Respondé:
-  - ¿Qué error concreto tenía el resultado? (semántico, de accesibilidad, lógico, de estilo, etc.)
-  - ¿Cómo lo detectaste? (al probarlo en el browser, al leer el código, al ver la consola...)
-  - ¿Por qué estaba técnicamente incorrecto o insuficiente?
-  - ¿Qué cambiaste exactamente para que funcionara bien?
-  Si no corregiste nada, explicá por qué el resultado era correcto tal como estaba.
--->
-```
+En este caso no fue necesario realizar correcciones manuales, ya que el prompt utilizado era únicamente de contexto y no solicitaba una respuesta concreta ni una solución directa
 
 ---
 
@@ -72,57 +45,25 @@
 
 ### Momento del proceso
 
-```
-<!--
-  Indicá en qué punto del examen usaste este prompt.
-  No es sobre la hora exacta — es sobre el contexto: ¿qué estabas intentando resolver cuando recurriste a la IA?
-  Ej: "Cuando no sabía cómo estructurar el layout con Grid."
-  Ej: "Al terminar el HTML, para verificar si me faltaba algo de accesibilidad."
-  Ej: "Al principio del ejercicio de JS, para entender cómo arrancar."
--->
-```
+Esta parte se realizó al inicio del ejercicio, en el momento de crear el archivo JavaScript. Fue la primera etapa donde se definieron las variables base del personaje
 
 ### Lo que le pedí a la IA
 
-```
-<!-- Pegá aquí el prompt exacto que escribiste. Debe ser el texto que vos escribiste, no la respuesta. -->
-```
+Actuá como un desarrollador JavaScript enfocado en buenas prácticas y código limpio. Necesito que crees la base de un archivo JS donde se definan las estadísticas de un personaje utilizando const o let según corresponda, sin usar var.
+Las variables deben estar en inglés y representar atributos como name, characterClass, level, health, mana, attack y defense.
 
 ### Análisis del resultado obtenido
 
-```
-<!--
-  Describí con tus propias palabras qué generó la IA. No copies el código ni la respuesta — analizála.
-  Mínimo 3 oraciones. Respondé:
-  - ¿Qué enfoque tomó la IA para resolver el problema?
-  - ¿El resultado era lo que esperabas? ¿Por qué sí o por qué no?
-  - ¿Qué parte te resultó útil como punto de partida?
--->
-```
+La IA tomó un enfoque bastante directo, generando las variables iniciales siguiendo buenas prácticas como el uso de const y nombres descriptivos en inglés. Sin embargo, el resultado no fue completamente correcto, ya que declaró level como const, cuando en realidad es un valor que puede cambiar a lo largo del programa y debería haberse definido con let.
 
 ### Qué debí corregir manualmente y por qué
 
-```
-<!--
-  Esta sección es la más importante. Sé específico/a. Mínimo 3 oraciones.
-  Respondé:
-  - ¿Qué error concreto tenía el resultado? (semántico, de accesibilidad, lógico, de estilo, etc.)
-  - ¿Cómo lo detectaste? (al probarlo en el browser, al leer el código, al ver la consola...)
-  - ¿Por qué estaba técnicamente incorrecto o insuficiente?
-  - ¿Qué cambiaste exactamente para que funcionara bien?
-  Si no corregiste nada, explicá por qué el resultado era correcto tal como estaba.
--->
-```
+El error fue que la IA declaró level como const, cuando debería ser una variable que pueda cambiar. Lo detecté al leer el código, ya que el nivel de un personaje es un valor dinámico.
+
+Técnicamente es incorrecto porque const no permite reasignación. La corrección fue cambiar const level por let level para que pueda actualizarse correctamente.
 
 ---
 
 ## Reflexión final
 
-```
-<!--
-  Mínimo 3 oraciones. Respondé:
-  - ¿Qué tipo de errores repitió la IA que tuviste que corregir?
-  - ¿Hubo algo que la IA resolvió bien a la primera sin que necesitaras tocarlo?
-  - ¿Cambiarías la forma en que le pedís cosas a la IA la próxima vez? ¿Por qué?
--->
-```
+Los errores de la IA no eran de sintaxis sino de cómo se modela una situación real, ya que la IA no interpretó correctamente qué valores podían cambiar. En cambio, en cuanto a semántica y estructura, respondió muy bien desde el inicio, aplicando buenas prácticas y manteniendo un código claro y ordenado. Para mejorar resultados futuros, sería más específico en los prompts, aclarando mejor las acciones a realizar.
