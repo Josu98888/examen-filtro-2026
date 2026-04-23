@@ -1,7 +1,7 @@
 # IA_HISTORY.md — Registro de Uso de IA
 
-**Alumno/a:** <!-- Tu nombre completo -->
-**Fecha:** <!-- Fecha del examen, ej: 21/04/2026 -->
+**Alumno/a:** <!-- Aquino Josue Emanuel -->
+**Fecha:** <!-- 23/04/2026 -->
 
 ---
 
